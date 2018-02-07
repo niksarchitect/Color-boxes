@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <style>
+  body {
+    background: #042029;
+    font-family: 'Merriweather';
+    color: #EAE3CB;
+  }
+
+  #art {
+    width: 320px;
+    margin: 0 auto;
+
+  }
+
+  #art h2 {
+    font-family: 'Bree Serif';
+    font-size: 2em;
+    color: #A57706;
+    margin-bottom: 0;
+  }
+
+  ul {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  ul li {
+    list-style: none;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  ul li img {
+    width: 100px;
+    border: 1px solid #FCF4DC;
+  }
+  </style>
+  <meta charset="UTF-8">
+  <title>JavaScript Events</title>
+  <!-- <link href='http://fonts.googleapis.com/css?family=Bree+Serif|Merriweather' rel='stylesheet' type='text/css'> -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="art">
+  <h2>Color Eliminator</h2>
+  <p>Pick your favorite box of color by clicking on the boxes click on boxes until you are left with a single one. Click on the last image to get some info</p>
+  <ul class="grid">
+    <li><img src="images/ylw.gif" alt="yellow box"></li>
+    <li><img src="images/org.gif" alt="orange box"></li>
+    <li><img src="images/ppl.gif" alt="purple"></li>
+    <li><img src="images/blu.gif" alt="blue box"></li>
+    <li><img src="images/pnk.gif" alt="pink box"></li>
+    <li><img src="images/grn.gif" alt="green box"></li>
+    <li><img src="images/ygr.gif" alt="yellow green box"></li>
+    <li><img src="images/gry.gif" alt="gray box"></li>
+    <li><img src="images/red.gif" alt="red box"></li>
+  </ul>
+    </div>
+  <!-- <script src="script.js"></script> -->
+  <script>
+  document.querySelector(".grid").addEventListener("click",function(e){
+    if(e.target.tagName === "IMG"){
+      var howMany= this.querySelectorAll("li").length;
+      if(howMany > 1 ){
+        var removeTarget= e.target.parentNode;
+        removeTarget.parentNode.removeChild(removeTarget);
+      } else {
+        var photoTitle = e.target.alt;
+        document.querySelector("#art p").innerHTML= "<p> You've picked: " + photoTitle + " your favourit color which is made out of 3 primary colors,Red,Blue,and Yellow</p>";
+      }
+
+
+      }
+  }, false);
+  </script>
+</body>
+</html>
